@@ -79,18 +79,17 @@ module Plank
   			#args = [host, port, app, option]
   			server = ::WEBrick::HTTPServer.new(option)
   			server.mount '/', Plank::Handler::WEBrick, app
-        
         server.start
       end
 
       # def self.shutdown
-      # 	server.shutdown
-      # 	server = nil
+        # 	server.shutdown
+        # 	server = nil
       # end
 
       # def initialize(server, app)
-      # 	super server 
-      # 	@app = app
+        # 	super server 
+        # 	@app = app
       # end
     end
   end
