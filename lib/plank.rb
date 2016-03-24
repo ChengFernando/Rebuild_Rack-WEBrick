@@ -80,7 +80,7 @@ module Plank
         #args = [host, port, app, option]
         server = ::WEBrick::HTTPServer.new(option)
 
-        server.mount_proc '/test' do |req, res|
+        server.mount_proc '/' do |req, res|
           res.body = "Hello World!"
           res['Content-Type'] = "text/html"
           res.status = 200 
