@@ -71,14 +71,21 @@ module Plank
       Plank::Handler::WEBrick
     end
 
-    class WEBrick < ::WEBrick::HTTPServlet::AbstractServlet
+    # don't need to inherit  
+    class WEBrick 
       def self.run(app, option={})
         host = option[:Host]
         port = option[:Port]
         environment = option[:Environment]
         #args = [host, port, app, option]
         server = ::WEBrick::HTTPServer.new(option)
-        server.mount '/', Plank::Handler::WEBrick, app
+
+        server.mount_proc '/test' do |req, res|
+          res.body = "Hello World!"
+          res['Content-Type'] = "text/html"
+          res.status = 200 
+        end
+
         server.start
       end
 
